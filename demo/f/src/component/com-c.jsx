@@ -6,14 +6,18 @@ export default class Com extends Component {
 
   // }
   static ropTypes = {
-    s: PropTypes.array.isRequired
+    s: PropTypes.array.isRequired,
+    add: PropTypes.func.isRequired,
+    del: PropTypes.func.isRequired
   }
   render () {
-    cons
+    const arr = this.props.s
     return (
       <div>
-        {this.props.s}
-        <List />
+        {arr.map((ele, i) =>{
+          return <List key={i} data={ele} i={i} del={this.props.del}/>
+        })}
+        <button onClick={this.props.add}>add</button>
       </div>
     )
   }
